@@ -1,0 +1,28 @@
+name: Safari Tests
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start Selenium Standalone Service
+        run: npx selenium-standalone start --drivers.chrome.version=92.0 --drivers.safari.version=10.1
+
+      - name: Run tests on Safari
+        run: npm test -- --browser safari
