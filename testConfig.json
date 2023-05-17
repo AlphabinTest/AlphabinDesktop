@@ -1,0 +1,8 @@
+{
+    "baseUrl": "https://www.google.com",
+    "browserStackUserName": "naman_sxuU92",
+    "browserStackKey": "VWtnAPxsH8CSrNxMDBiZ",
+    "browserStack":true,
+    "browser":"chrome",
+    "executionmode":"--headless"
+}
