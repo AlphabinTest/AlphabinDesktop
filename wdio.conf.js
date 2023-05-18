@@ -1,8 +1,6 @@
 const { removeSync } = require('fs-extra');
 const testData = require('./testConfig.json')
 
-const ReportGenerator = require('@wdio/reporter').default;
-
 exports.config = {
 
   user: testData.browserStackUserName,
@@ -40,14 +38,14 @@ exports.config = {
   framework: 'mocha',
 
 
-  reporters: [
-    'spec',
-    ['html', {
-      outputDir: './reports/html',
-      filename: 'report.html',
-      reportTitle: 'Test Report',
-    }],
-  ],
+  // reporters: [
+  //   'spec',
+  //   ['html', {
+  //     outputDir: './reports/html',
+  //     filename: 'report.html',
+  //     reportTitle: 'Test Report',
+  //   }],
+  // ],
 
 
   mochaOpts: {
@@ -70,16 +68,16 @@ exports.config = {
    * @param  {object} args     object that will be merged with the main configuration once worker is initialized
    * @param  {object} execArgv list of string arguments passed to the worker process
    */
-  onPrepare: async function () {
-    reportAggregator = new ReportGenerator({
-      stdout: true,
-      jsonFile: './reports/html/results.json',
-      outputDir: './reports/html',
-      reportTitle: 'Test Report',
-      // ... other options
-    });
-    await reportAggregator.clean(); // Clean existing reports
-  },
+  // onPrepare: async function () {
+  //   reportAggregator = new ReportGenerator({
+  //     stdout: true,
+  //     jsonFile: './reports/html/results.json',
+  //     outputDir: './reports/html',
+  //     reportTitle: 'Test Report',
+  //     // ... other options
+  //   });
+  //   await reportAggregator.clean(); // Clean existing reports
+  // },
   /**
    * Gets executed just after a worker process has exited.
    * @param  {string} cid      capability id (e.g 0-0)
@@ -166,11 +164,11 @@ exports.config = {
    * @param {<Object>} results object containing test results
    */
 
-  onComplete: async function () {
-    await reportAggregator.generateHTML();
-    await reportAggregator.generateJUnitXML();
-    await reportAggregator.generateJSON();
-  },
+  // onComplete: async function () {
+  //   await reportAggregator.generateHTML();
+  //   await reportAggregator.generateJUnitXML();
+  //   await reportAggregator.generateJSON();
+  // },
 
   /**
   * Gets executed when a refresh happens.
