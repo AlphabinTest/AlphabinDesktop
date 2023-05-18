@@ -1,4 +1,4 @@
-name: Safari Tests
+name: Staging tests on Safari
 
 on:
   schedule:
@@ -19,7 +19,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Start Selenium Standalone Service
         run: npx selenium-standalone start --drivers.safari.version=<desired-version>
