@@ -23,11 +23,3 @@ jobs:
 
       - name: Run tests on Chrome
         run: npm test -- --browser chrome --browserStackUserName "naman_sxuU92" --browserStackKey "VWtnAPxsH8CSrNxMDBiZ"
-
-      - name: Archive the test results
-        uses: actions/upload-artifact@v2
-        if: ${{ always() }}
-        with:
-          name: test-report
-          path: ./allure-report
-          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn` 

@@ -7,7 +7,7 @@ describe('Google chrome test', async()=>
     it('Google.com test', async()=>
     {
         await utils.openSite(testData.baseUrl)
-        await utils.pauseTime(5000)
+        await utils.pauseTime(2000)
         await utils.assertCurrentSite(testData.baseUrl)
     })
 })

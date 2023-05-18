@@ -1,4 +1,4 @@
-name: Safari Tests
+name: Firefox Tests
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Start Selenium Standalone Service
-        run: npx selenium-standalone start --drivers.safari.version=<desired-version>
+        run: npx selenium-standalone start --drivers.firefox.version=<desired-version>
 
-      - name: Run tests on Safari
-        run: npm test -- --browser safari --browserStackUserName "naman_sxuU92" --browserStackKey "VWtnAPxsH8CSrNxMDBiZ"
+      - name: Run tests on Firefox
+        run: npm test -- --browser firefox --browserStackUserName "naman_sxuU92" --browserStackKey "VWtnAPxsH8CSrNxMDBiZ"
