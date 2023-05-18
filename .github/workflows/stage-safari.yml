@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Start Selenium Standalone Service
-        run: npx selenium-standalone start --drivers.safari.version=<desired-version>
+        run: npx selenium-standalone start --drivers.safari.version=3.141.59
 
       - name: Run tests on Safari
         run: npm test -- --browser safari --browserStackUserName "naman_sxuU92" --browserStackKey "VWtnAPxsH8CSrNxMDBiZ"
