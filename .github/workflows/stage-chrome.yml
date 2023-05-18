@@ -1,4 +1,4 @@
-name: Chrome Tests
+name: Staging tests on Chrome
 
 on:
   schedule:
