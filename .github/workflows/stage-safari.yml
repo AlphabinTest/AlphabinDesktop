@@ -18,8 +18,13 @@ jobs:
         with:
           node-version: 16
 
+      - name: Change browser from Chrome to Safari in testConfig.js file
+        run: |
+          sed -i 's/chrome/safari/g' testConfig.json
+          cat testConfig.json
+          
       - name: Install dependencies
         run: npm install
 
       - name: Run tests on Safari
-        run: npx wdio run wdio.conf.js --suite safari
+        run: npm test -- --browser safari --browserStackUserName "naman_sxuU92" --browserStackKey "VWtnAPxsH8CSrNxMDBiZ"
