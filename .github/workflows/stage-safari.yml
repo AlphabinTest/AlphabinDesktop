@@ -22,4 +22,4 @@ jobs:
         run: npm install
 
       - name: Run tests on Safari
-        run: npm test -- --browser safari --browserStackUserName "naman_sxuU92" --browserStackKey "VWtnAPxsH8CSrNxMDBiZ"
+        run: npx wdio run wdio.conf.js --suite safari
