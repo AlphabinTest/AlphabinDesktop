@@ -1,10 +1,10 @@
 const { removeSync } = require('fs-extra');
 const testData = require('./testConfig.json')
 
-exports.config = {
+// const {ReportAggregator, HtmlReporter} = require("wdio-html-nice-reporter")
+// let reportAggregator = ReportAggregator;
 
-  user: testData.browserStackUserName,
-  key: testData.browserStackKey,
+exports.config = {
 
   runner: 'local',
 
@@ -20,7 +20,7 @@ exports.config = {
 
   capabilities: [{
 
-    browserName: 'chrome' // or "firefox", "microsoftedge", "safari"
+    // browserName: 'chrome' // or "firefox", "microsoftedge", "safari"
   }],
 
   logLevel: 'info',
@@ -40,7 +40,7 @@ exports.config = {
 
   // reporters: [
   //   'spec',
-  //   ['html', {
+  //   ['html-nice', {
   //     outputDir: './reports/html',
   //     filename: 'report.html',
   //     reportTitle: 'Test Report',
@@ -48,10 +48,11 @@ exports.config = {
   // ],
 
 
-  mochaOpts: {
-    ui: 'bdd',
-    timeout: 60000
-  },
+  // mochaOpts: {
+  //   ui: 'bdd',
+  //   timeout: 60000
+  // },
+
 
   /**
    * Gets executed once before all workers get launched.
@@ -85,8 +86,7 @@ exports.config = {
    * @param  {object} specs    specs to be run in the worker process
    * @param  {number} retries  number of retries used
    */
-  // onWorkerEnd: function (cid, exitCode, specs, retries) {
-  // },
+
   /**
    * Gets executed just before initialising the webdriver session and test framework. It allows you
    * to manipulate configurations depending on the capability or spec.
@@ -95,8 +95,7 @@ exports.config = {
    * @param {Array.<String>} specs List of spec file paths that are to be run
    * @param {string} cid worker id (e.g. 0-0)
    */
-  // beforeSession: function (config, capabilities, specs, cid) {
-  // },
+
   /**
    * Gets executed before test execution begins. At this point you can access to all global
    * variables like `browser`. It is the perfect place to define custom commands.
@@ -104,15 +103,13 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {object}         browser      instance of created browser/device session
    */
-  // before: function (capabilities, specs) {
-  // },
+
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {string} commandName hook command name
    * @param {Array} args arguments that command would receive
    */
-  // beforeCommand: function (commandName, args) {
-  // },
+
   /**
    * Hook that gets executed before the suite starts
    * @param {object} suite suite details

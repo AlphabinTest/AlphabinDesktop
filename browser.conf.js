@@ -3,6 +3,8 @@ const testData = require('./testConfig.json');
 
 if (testData.browser === "chrome") {
     if (testData.browserStack) {
+        config.user= testData.browserStackUserName,
+        config.key= testData.browserStackKey,
         config.capabilities = [
             {
                 maxInstances: 5,
@@ -29,43 +31,18 @@ if (testData.browser === "chrome") {
         config.services = [['chromedriver']];
     }
 }
-
-else if (testData.browser === "firefox") {
+if (testData.browser === "safari") {
     if (testData.browserStack) {
-        config.capabilities = [
-            {
-                maxInstances: 5,
-                browserName: 'Firefox',
-                acceptInsecureCerts: true,
-                "os": "OS X",
-                "osVersion": "Sierra",
-                "browserVersion": "92.0",
-                "local": "false",
-            }
-        ];
-        config.services = [['browserstack']];
-    } else {
-        config.capabilities = [
-            {
-                maxInstances: 5,
-                browserName: 'firefox',
-                acceptInsecureCerts: true,
-            }
-        ];
-        config.services = [['selenium-standalone']];
-    }
-}
-
-else if (testData.browser === "safari") {
-    if (testData.browserStack) {
+        config.user= testData.browserStackUserName,
+        config.key= testData.browserStackKey,
         config.capabilities = [
             {
                 maxInstances: 5,
                 browserName: 'Safari',
                 acceptInsecureCerts: true,
                 "os": "OS X",
-                "osVersion": "Sierra",
-                "browserVersion": "10.1",
+                "osVersion": "Mojave",
+                "browserVersion": "12.1",
                 "local": "false",
             }
         ];
@@ -77,7 +54,7 @@ else if (testData.browser === "safari") {
                 browserName: 'safari',
             }
         ];
-        config.services = [['selenium-standalone']];
+        config.services = [['safaridriver']];
     }
 }
 

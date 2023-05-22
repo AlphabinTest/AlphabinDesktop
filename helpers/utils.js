@@ -94,7 +94,7 @@ class Utils
 
     static async assertCurrentSite(actualSite)
     {
-        expect(await browser.getUrl()).to.contain(actualSite)
+      expect(await browser.getUrl()).to.contain(actualSite)
     }
     }
 
