@@ -1,4 +1,5 @@
 const { assert, expect } = require('chai')
+const fs = require('fs');
 
 class Utils {
   // static async setValue(locator, inputText, options = { slow: true }) {
@@ -28,12 +29,39 @@ class Utils {
   //       throw new Error(`not able to send text: ${err}`);
   //     }
   // }
+
+  static async waitForPageLoad(timeout) {
+    const waitTimeout = timeout || browser.config.waitforTimeout;
+    await browser.waitUntil(async () => {
+      const readyState = await browser.execute(() => document.readyState);
+      return readyState === 'complete';
+    }, { timeout: waitTimeout, timeoutMsg: 'Page did not load within the specified timeout' });
+  
+    // Add a static wait of 1 seconds
+    await browser.pause(1000);
+  }
+
+  static async hoverOverElement(locator) {
+    await browser.moveTo(locator);
+  }
+  static async scrollUntilElementVisible(selector) {
+    const element = await $(selector);
+    while (!(await element.isDisplayed())) {
+      // Perform scroll action here
+      await browser.executeScript('window.scrollBy(0, 100);');
+      // Wait for a small delay after scrolling
+      await browser.pause(500);
+    }
+  }
+
   static async typeText(locator, value) {
+    await browser.pause(1500)
     const el = $(locator)
     await el.setValue(value)
   }
 
   static async clickOnElement(locator) {
+    await browser.pause(1500)
     const el = $(locator)
     await el.click()
   }
@@ -60,6 +88,7 @@ class Utils {
   }
 
   static async getCurrentUrl() {
+    await browser.pause(1500)
     await browser.getUrl()
   }
 
@@ -75,9 +104,19 @@ class Utils {
     await browser.acceptAlert()
   }
 
-  static async openSite(url) {
-    await browser.url(url)
-    await browser.maximizeWindow()
+  static async openSite() {
+    // Read the JSON file
+    const jsonData = fs.readFileSync('testConfig.json', 'utf8');
+  
+    // Parse the JSON data
+    const data = JSON.parse(jsonData);
+  
+    // Extract the URL from the JSON data
+    const url = data.baseUrl;
+  
+    // Open the site using the extracted URL
+    await browser.url(url);
+    await browser.maximizeWindow();
   }
 
   static async assertCurrentSite(actualSite) {

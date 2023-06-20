@@ -1,5 +1,14 @@
 const utils = require('../helpers/utils')
 
+//Locators for the header elements of the homepage
+const _alphabinLogo = '.header__logo'
+const _homeButtonHomePage = '//a[contains(text(), "Home")]'
+const _servicesButtonHomePage = '.dropdown'
+const _aboutUsHomePage = '//a[contains(text(), "About us")]'
+const _contactUsHomePage = '//a[contains(text(), "Contact us")]'
+const _loginButtonHomePage = '[href="login"]'
+const _signupButtonHomePage = '[href="registration"]'
+
 class HeaderPage_HomePage
 {
     static async headerButtonsExistence()
@@ -29,6 +38,46 @@ class HeaderPage_HomePage
         await utils.getTextAndExpectValue(_contactUsHomePage, 'Contact us');
         await utils.getTextAndExpectValue(_loginButtonHomePage, 'Log in');
         await utils.getTextAndExpectValue(_signupButtonHomePage, 'Sign up');
+    }
+
+    static async verifyDropDownServices()
+    {
+        await utils.hoverOverElement(_servicesButtonHomePage);
+    }
+
+    static async clickOnAlphaTestLogo()
+    {
+        await utils.clickOnElement(_alphabinLogo)
+    }
+
+    static async clickOnHomeButton()
+    {
+        await utils.clickOnElement(_homeButtonHomePage)
+    }
+
+    static async clickOnServices()
+    {
+        await utils.clickOnElement(_servicesButtonHomePage)
+    }
+
+    static async clickOnAboutUs()
+    {
+        await utils.clickOnElement(_aboutUsHomePage)
+    }
+
+    static async clickOnContactUs()
+    {
+        await utils.clickOnElement(_contactUsHomePage)
+    }
+
+    static async clickOnLogIn()
+    {
+        await utils.clickOnElement(_loginButtonHomePage)
+    }
+
+    static async clickOnSignUp()
+    {
+        await utils.clickOnElement(_signupButtonHomePage)
     }
 }
 module.exports = HeaderPage_HomePage

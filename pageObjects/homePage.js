@@ -3,14 +3,6 @@ const headerHomePage = require('./headerPage')
 const heroHomePage = require('./heroPage')
 const footerHomePage = require('./footerPage')
 
-//Locators for the header elements of the homepage
-const _alphabinLogo = '.header__logo'
-const _homeButtonHomePage = '//a[contains(text(), "Home")]'
-const _servicesButtonHomePage = '.dropdown'
-const _aboutUsHomePage = '//a[contains(text(), "About us")]'
-const _contactUsHomePage = '//a[contains(text(), "Contact us")]'
-const _loginButtonHomePage = '[href="login"]'
-const _signupButtonHomePage = '[href="registration"]'
 
 class HomePage
 {
@@ -23,12 +15,14 @@ class HomePage
 
     static async clickOnLogInButton()
     {
-        await utils.clickOnElement(_loginButtonHomePage);
+        await headerHomePage.clickOnLogIn();
+        await utils.waitForPageLoad();
     }
 
     static async clickOnSignUpButton()
     {
-        await utils.clickOnElement(_signupButtonHomePage);
+        await headerHomePage.clickOnSignUp();
+        await utils.waitForPageLoad();
     }
 
     //All the following tests are for Hero page of the Home page

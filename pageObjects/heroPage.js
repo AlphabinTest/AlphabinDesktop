@@ -89,7 +89,9 @@ class HeroPage_HomePage
 
     static async depthVerificationOfServices()
     {
+        await utils.scrollUntilElementVisible(_apiTestingTitle);
         await utils.clickOnElement(_modelTestingTitle);
+        await utils.waitForPageLoad();
     }
 }
 module.exports = HeroPage_HomePage
